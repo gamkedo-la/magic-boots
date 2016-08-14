@@ -8,7 +8,6 @@ public class PlayerControl : MonoBehaviour {
 
 	float playerJumpRange = 20000f;
 
-	float heightAboveCloud = 2.6f; // how high above center to "perch" on it (affect by cloud scale?)
 	float jumpHeightStretch = 1250.0f;
 		
 	int cloudLayerMask;
@@ -22,7 +21,7 @@ public class PlayerControl : MonoBehaviour {
 	Vector3 goTo;
 	float destTime = 0.0f;
 
-	GameObject recentCloud = null;
+	public GameObject recentCloud = null;
 
 	// Use this for initialization
 	void Start () {
@@ -49,10 +48,7 @@ public class PlayerControl : MonoBehaviour {
 
 		if(destTime > Time.realtimeSinceStartup) {
 			float interpPerc = 1.0f - (destTime - Time.realtimeSinceStartup) / driftTime;
-			if(interpPerc >= 1.0f) {
-				destTime = 0.0f;
-				transform.position = recentCloud.transform.position + goTo;
-			} else {
+			if(interpPerc < 1.0f) {
 				float heightBoostPerc;
 				float heightTempToSQ = (interpPerc - 0.5f)*2.0f;
 				heightBoostPerc = -(heightTempToSQ * heightTempToSQ) + 1;
@@ -63,6 +59,10 @@ public class PlayerControl : MonoBehaviour {
 			}
 			showCloudJump = false;
 		} else if(recentCloud) {
+			CloudBrain cbScript = recentCloud.GetComponentInParent<CloudBrain>();
+			if(cbScript) {
+				cbScript.ClearTreasure();
+			}
 			transform.position = recentCloud.transform.position + goTo;
 		}
 
@@ -77,7 +77,7 @@ public class PlayerControl : MonoBehaviour {
 					recentCloud.layer = cloudLayer;
 				}
 				recentCloud = rhInfo.collider.gameObject;
-				goTo = Vector3.up * heightAboveCloud * recentCloud.transform.lossyScale.z;
+				goTo = Vector3.up * CloudGenerator.heightAboveCloud * recentCloud.transform.lossyScale.z;
 				recentCloud.layer = 0;
 				cameFrom = transform.position;
 				destTime = Time.realtimeSinceStartup + driftTime;

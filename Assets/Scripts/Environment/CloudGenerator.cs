@@ -4,7 +4,14 @@ using System.Collections.Generic;
 
 public class CloudGenerator : MonoBehaviour
 {
-    [SerializeField] GameObject[] cloudPrefabs;
+	public static float heightAboveCloud = 2.6f; // how high above center to "perch" on it (cloud scale multiplies by this)
+	public static float heightAboveCloudTreasure = 2.1f; // lower than player cam since should partly be "in" cloud
+
+	public static CloudGenerator instance;
+
+    public GameObject[] treasurePrefabs;
+
+	[SerializeField] GameObject[] cloudPrefabs;
 
     [Header("Distribution")]
     [SerializeField] int m_numberOfClouds = 30;
@@ -42,6 +49,9 @@ public class CloudGenerator : MonoBehaviour
 
     public static Dictionary<GameObject, Vector2> AllClouds;
 
+	void Awake() {
+		instance = this;
+	}
 
 	void Start () 
 	{
@@ -74,6 +84,11 @@ public class CloudGenerator : MonoBehaviour
 
 			var rotation = Random.Range(0f, 356f) * m_rotationAxis;
 			newCloud.transform.Rotate(rotation);
+
+			/*CloudBrain cbScript = newCloud.GetComponent<CloudBrain>();
+			if(cbScript) {
+				cbScript.AddTreasure();
+			}*/
 
 			var renderers = newCloud.GetComponentsInChildren<MeshRenderer>();
 			m_clouds.Add(newCloud, renderers);
