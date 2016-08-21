@@ -179,7 +179,7 @@ public class EndlessTerrain : MonoBehaviour
 
         private MeshRenderer m_meshRenderer;
         private MeshFilter m_meshFilter;
-        private MeshCollider m_meshCollider;
+        // private MeshCollider m_meshCollider;
 
         private LodInfo[] m_detailLevels;
         private LodMesh[] m_lodMeshes;
@@ -202,7 +202,7 @@ public class EndlessTerrain : MonoBehaviour
             m_meshObject.tag = Tags.Ground;
             m_meshRenderer = m_meshObject.AddComponent<MeshRenderer>();
             m_meshFilter = m_meshObject.AddComponent<MeshFilter>();
-            m_meshCollider = m_meshObject.AddComponent<MeshCollider>();
+            //m_meshCollider = m_meshObject.AddComponent<MeshCollider>();
             m_meshRenderer.material = material;
 			m_meshObject.AddComponent<TextureScroll>();
             m_meshObject.transform.position = m_positionV3 * Scale;
@@ -310,12 +310,12 @@ public class EndlessTerrain : MonoBehaviour
                     if(lodMesh.m_hasMesh && nextLodMesh.m_hasMesh)
                     {
                         m_meshFilter.mesh = lodMesh.m_mesh;
-                        m_meshCollider.sharedMesh = null;
+                        /*m_meshCollider.sharedMesh = null;
 
                         if (lodIndex == 0)
                         {
                             m_meshCollider.sharedMesh = nextLodMesh.m_mesh;
-                        }
+                        }*/
 
                         m_previousLodIndex = lodIndex;
                         m_meshesUpdated = true;

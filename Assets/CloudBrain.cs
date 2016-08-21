@@ -9,6 +9,10 @@ public class CloudBrain : MonoBehaviour {
 	}
 
 	public void AddTreasure () {
+		if(CloudGenerator.instance.treasurePrefabs.Length == 0) {
+			return;
+		}
+
 		int cloudIndex = Random.Range(0, CloudGenerator.instance.treasurePrefabs.Length);
 		myTreasure = (GameObject)Instantiate(CloudGenerator.instance.treasurePrefabs[cloudIndex]);
 
