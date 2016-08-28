@@ -5,7 +5,9 @@ public class CloudBrain : MonoBehaviour {
 	private GameObject myTreasure = null;
 
 	void Start() {
-		AddTreasure();
+		if(Random.Range(0.0f, 1.0f) < CloudGenerator.instance.treasureSpawnOdds) {
+			AddTreasure();
+		}
 	}
 
 	public void AddTreasure () {
@@ -17,9 +19,24 @@ public class CloudBrain : MonoBehaviour {
 		myTreasure = (GameObject)Instantiate(CloudGenerator.instance.treasurePrefabs[cloudIndex]);
 
 		myTreasure.transform.Rotate(Vector3.up, Random.Range(0.0f,360.0f));
-		myTreasure.transform.position = transform.position +
-			Vector3.up * CloudGenerator.heightAboveCloudTreasure * transform.lossyScale.z;
+		myTreasure.transform.position = myTopPt();
 		myTreasure.transform.parent = transform;
+	}
+
+	public Vector3 myTopPt() {
+		return transform.position + Vector3.up * CloudGenerator.heightAboveCloudTreasure * transform.lossyScale.z;
+	}
+
+	public bool hasTreasure() {
+		return (myTreasure != null);
+	}
+
+	public void assignTreasure(GameObject assignThis) {
+		myTreasure = assignThis;
+		myTreasure.transform.parent = transform;
+	}
+	public void forgetTreasure() {
+		myTreasure = null;
 	}
 
 	public void ClearTreasure () {

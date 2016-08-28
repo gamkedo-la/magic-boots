@@ -10,6 +10,7 @@ public class CloudGenerator : MonoBehaviour
 	public static CloudGenerator instance;
 
     public GameObject[] treasurePrefabs;
+	public float treasureSpawnOdds = 0.15f;
 
 	[SerializeField] GameObject[] cloudPrefabs;
 
@@ -57,7 +58,6 @@ public class CloudGenerator : MonoBehaviour
 	{
         m_cloudParent = gameObject;
 
-		if (AllClouds == null)
 			AllClouds = new Dictionary<GameObject, Vector2>();
 
 		m_mainCamera = Camera.main;
