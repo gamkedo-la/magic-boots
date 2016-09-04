@@ -154,8 +154,8 @@ public class PlayerControl : MonoBehaviour {
 		/*transform.position += transform.forward * 120.0f * Time.deltaTime * Input.GetAxis("Vertical");
 		transform.position += transform.right * 100.0f * Time.deltaTime * Input.GetAxis("Horizontal");
 		transform.position += Vector3.up * 100.0f * Time.deltaTime * Input.GetAxis("RiseFall");*/
-		turnLong += Input.GetAxis("Mouse X") * 120.0f * Time.deltaTime;
-		turnLat += -Input.GetAxis("Mouse Y") * 120.0f * Time.deltaTime;
+		turnLong += Input.GetAxis("Mouse X") * 120.0f * Time.deltaTime / Time.timeScale;
+		turnLat += -Input.GetAxis("Mouse Y") * 120.0f * Time.deltaTime / Time.timeScale;
 
 		turnLat = Mathf.Clamp(turnLat, -55.0f, 55.0f);
 
