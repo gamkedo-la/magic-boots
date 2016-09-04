@@ -60,6 +60,8 @@ public class PlayerControl : MonoBehaviour {
 		} else if(dead == false) {
 			dead = true;
 			gameOverMsg.SetActive(true);
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
 		}
 	}
 	
