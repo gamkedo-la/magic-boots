@@ -22,6 +22,13 @@ public class PlayerControl : MonoBehaviour {
 	float destTime = 0.0f;
 
 	public GameObject recentCloud = null;
+	public MonoBehaviour colorCorrectionNightmare;
+	bool alreadyCrazy = false;
+	bool dead = false;
+	public GameObject gameOverMsg;
+	public Text scoreMsg;
+	int scoreNow;
+	public int dangerTimeSec = 12;
 
 	// Use this for initialization
 	void Start () {
@@ -32,11 +39,41 @@ public class PlayerControl : MonoBehaviour {
 		cloudLayerMask = LayerMask.GetMask("Cloud");
 
 		cameFrom = goTo = transform.position;
+		scoreNow = 0;
+	}
+
+	IEnumerator CrazyMode() {
+		if(alreadyCrazy == false) {
+			alreadyCrazy = true;
+			colorCorrectionNightmare.enabled = true;
+			Time.timeScale = 3.0f;
+
+			for(int sec = 0; sec < dangerTimeSec; sec++) {
+				int timeLeft = dangerTimeSec-sec;
+				scoreMsg.text = ""+scoreNow + " -- " + timeLeft;
+				yield return new WaitForSeconds(Time.timeScale);
+			}
+
+			colorCorrectionNightmare.enabled = false;
+			Time.timeScale = 1.0f;
+			alreadyCrazy = false;
+		} else if(dead == false) {
+			dead = true;
+			gameOverMsg.SetActive(true);
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		RaycastHit rhInfo;
+
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			Application.Quit();
+		}
+
+		if(dead) {
+			return;
+		}
 
 		bool showCloudJump;
 		if(Physics.Raycast(transform.position, transform.forward, out rhInfo, playerJumpRange, cloudLayerMask)) {
@@ -61,7 +98,17 @@ public class PlayerControl : MonoBehaviour {
 		} else if(recentCloud) {
 			CloudBrain cbScript = recentCloud.GetComponentInParent<CloudBrain>();
 			if(cbScript) {
-				cbScript.ClearTreasure();
+				CloudBrain.BumpKind treasureReturnKind = cbScript.ClearTreasure();
+				switch(treasureReturnKind) {
+				case CloudBrain.BumpKind.monster:
+					StartCoroutine(CrazyMode());
+					break;
+				case CloudBrain.BumpKind.treasure:
+					scoreNow++;
+					scoreMsg.text = ""+scoreNow;
+					break;
+				}
+						
 			}
 			transform.position = recentCloud.transform.position + goTo;
 		}

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CloudBrain : MonoBehaviour {
 	private GameObject myTreasure = null;
+	public enum BumpKind {empty,monster,treasure};
 
 	void Start() {
 		if(Random.Range(0.0f, 1.0f) < CloudGenerator.instance.treasureSpawnOdds) {
@@ -39,10 +40,18 @@ public class CloudBrain : MonoBehaviour {
 		myTreasure = null;
 	}
 
-	public void ClearTreasure () {
+	public BumpKind ClearTreasure () { // returns true if it was a monster
 		if(myTreasure) {
+			MonsterLeapAI mlaiScript = myTreasure.GetComponent<MonsterLeapAI>();
 			Destroy(myTreasure);
-			Debug.Log("Got treasure!");
+			if(mlaiScript != null) {
+				// Debug.Log("Removed monster!");
+				return BumpKind.monster;
+			} else {
+				// Debug.Log("Removed treasure!");
+				return BumpKind.treasure;
+			}
 		}
+		return BumpKind.empty;
 	}
 }

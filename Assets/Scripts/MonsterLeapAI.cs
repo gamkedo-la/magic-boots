@@ -46,10 +46,11 @@ public class MonsterLeapAI : MonoBehaviour {
 						yield return new WaitForSeconds( 0.025f );
 					}
 				} else {
-					Debug.Log("didn't jump because: " + hasScript + " / " + hasTreasureAlready);
+					// Debug.Log("didn't jump because: " + hasScript + " / " + hasTreasureAlready);
 				}
 			} else {
-				Debug.Log("no cloud in range to jump to");
+				Debug.Log("no cloud in range to jump to, vanishing");
+				Destroy(gameObject);
 			}
 		}
 	}
