@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.08.00">
+    <object class="AudioFile" id="{3a8cec69-7586-45b8-af46-73051223ea04}">
+        <property name="assetPath">
+            <value>Nightmares.ogg</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>126</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{c2c2fea7-5644-4c87-87fb-81952b12766c}</destination>
+        </relationship>
+    </object>
+</objects>

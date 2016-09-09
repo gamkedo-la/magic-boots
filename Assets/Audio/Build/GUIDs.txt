@@ -1,0 +1,9 @@
+{6e868d1d-c1f1-44fe-8747-b62a20aa73d2} event:/Music
+{026260cc-c3cf-4cdd-a758-e5df434b4ee5} event:/Pause
+{05c9458a-8fbf-4a5f-85f3-9436dcaa7f79} bus:/
+{16ccdc66-4fbb-4e64-b54e-e66ad44daba5} bus:/Music
+{1796c353-112a-4bc7-8506-b178faddcee9} bus:/SFX
+{9a74f136-8cfc-41e1-a561-d8595d3e5e70} bus:/Reverb
+{d84dafce-c898-4aba-b973-c791a44999ed} snapshot:/Pause
+{2deea633-df3b-40ac-9f12-6afdb2c93d69} snapshot:/Default
+{bd756704-81ba-44ef-81f8-10bbebfa9ff8} bank:/Master Bank
