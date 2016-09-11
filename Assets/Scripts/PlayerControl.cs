@@ -5,6 +5,7 @@ using System.Collections;
 public class PlayerControl : MonoBehaviour {
 	public GameObject cloudJumpReady;
 	public GameObject cloudJumpTooFar;
+	public AudioSource nightmareSound;
 
 	float playerJumpRange = 20000f;
 
@@ -45,12 +46,13 @@ public class PlayerControl : MonoBehaviour {
 	IEnumerator CrazyMode() {
 		if(alreadyCrazy == false) {
 			alreadyCrazy = true;
+			nightmareSound.Play();
 			colorCorrectionNightmare.enabled = true;
 			Time.timeScale = 3.0f;
 
 			for(int sec = 0; sec < dangerTimeSec; sec++) {
 				int timeLeft = dangerTimeSec-sec;
-				scoreMsg.text = ""+scoreNow + " -- " + timeLeft;
+				scoreMsg.text = ""+scoreNow + " (" + timeLeft+" sec)";
 				yield return new WaitForSeconds(Time.timeScale);
 			}
 
@@ -59,6 +61,7 @@ public class PlayerControl : MonoBehaviour {
 			alreadyCrazy = false;
 		} else if(dead == false) {
 			dead = true;
+			scoreMsg.text = ""+scoreNow;
 			gameOverMsg.SetActive(true);
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;

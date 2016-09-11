@@ -25,6 +25,9 @@ public class MonsterLeapAI : MonoBehaviour {
 				bool hasTreasureAlready = (cbScript && cbScript.hasTreasure());
 				if(hasScript && hasTreasureAlready==false) {
 					Vector3 startedAt = transform.position;
+					if(transform.parent == null) {
+						break; // test prefab, no cloud, turn off its ai
+					}
 					CloudBrain comingFrom = transform.parent.GetComponent<CloudBrain>();
 					comingFrom.forgetTreasure();
 					cbScript.assignTreasure(gameObject);
