@@ -52,16 +52,19 @@ public class PlayerControl : MonoBehaviour {
 
 			for(int sec = 0; sec < dangerTimeSec; sec++) {
 				int timeLeft = dangerTimeSec-sec;
-				scoreMsg.text = ""+scoreNow + " (" + timeLeft+" sec)";
-				yield return new WaitForSeconds(Time.timeScale);
+				if(dead == false) {
+					scoreMsg.text = "" + scoreNow + " (" + timeLeft + " sec)";
+					yield return new WaitForSeconds(Time.timeScale);
+				} else {
+					yield break;
+				}
 			}
-
+			scoreMsg.text = ""+scoreNow;
 			colorCorrectionNightmare.enabled = false;
 			Time.timeScale = 1.0f;
 			alreadyCrazy = false;
 		} else if(dead == false) {
 			dead = true;
-			scoreMsg.text = ""+scoreNow;
 			gameOverMsg.SetActive(true);
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
@@ -110,7 +113,9 @@ public class PlayerControl : MonoBehaviour {
 					break;
 				case CloudBrain.BumpKind.treasure:
 					scoreNow++;
-					scoreMsg.text = ""+scoreNow;
+					if(alreadyCrazy == false) {
+						scoreMsg.text = "" + scoreNow;
+					}
 					break;
 				}
 						
