@@ -5,6 +5,7 @@ public class MonsterLeapAI : MonoBehaviour {
 	float minDist = 1000.0f;
 	int layerMask;
 	float jumpHeightStretch = 750.0f;
+	public static bool seekPlayer = false;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,18 @@ public class MonsterLeapAI : MonoBehaviour {
 			Collider[] nearBy = Physics.OverlapSphere(transform.position,9000.0f,layerMask);
 			if(nearBy.Length > 0) {
 				int whichCloud = Random.Range(0, nearBy.Length);
+
+				if(seekPlayer) {
+					for(int i = 0; i < nearBy.Length; i++) {
+						CloudBrain cbScriptTest =
+							nearBy[i].gameObject.GetComponentInParent<CloudBrain>();
+						if(cbScriptTest && cbScriptTest.hasPlayer) {
+							whichCloud = i;
+							break;
+						}
+					}
+				}
+
 				CloudBrain cbScript = nearBy[whichCloud].gameObject.GetComponentInParent<CloudBrain>();
 				float distTo = Vector3.Distance(nearBy[whichCloud].transform.position, transform.position);
 				bool hasScript = (cbScript!=null);

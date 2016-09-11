@@ -4,6 +4,7 @@ using System.Collections;
 public class CloudBrain : MonoBehaviour {
 	private GameObject myTreasure = null;
 	public enum BumpKind {empty,monster,treasure};
+	public bool hasPlayer = false;
 
 	void Start() {
 		if(Random.Range(0.0f, 1.0f) < CloudGenerator.instance.treasureSpawnOdds) {

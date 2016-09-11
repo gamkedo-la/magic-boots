@@ -30,6 +30,7 @@ public class PlayerControl : MonoBehaviour {
 	public Text scoreMsg;
 	int scoreNow;
 	public int dangerTimeSec = 12;
+	bool deadTooSoonGuard = false;
 
 	// Use this for initialization
 	void Start () {
@@ -46,6 +47,8 @@ public class PlayerControl : MonoBehaviour {
 	IEnumerator CrazyMode() {
 		if(alreadyCrazy == false) {
 			alreadyCrazy = true;
+			deadTooSoonGuard = true;
+			MonsterLeapAI.seekPlayer = true;
 			nightmareSound.Play();
 			colorCorrectionNightmare.enabled = true;
 			Time.timeScale = 3.0f;
@@ -55,15 +58,19 @@ public class PlayerControl : MonoBehaviour {
 				if(dead == false) {
 					scoreMsg.text = "" + scoreNow + " (" + timeLeft + " sec)";
 					yield return new WaitForSeconds(Time.timeScale);
+					if(deadTooSoonGuard) {
+						deadTooSoonGuard = false;
+					}
 				} else {
 					yield break;
 				}
 			}
+			MonsterLeapAI.seekPlayer = false;
 			scoreMsg.text = ""+scoreNow;
 			colorCorrectionNightmare.enabled = false;
 			Time.timeScale = 1.0f;
 			alreadyCrazy = false;
-		} else if(dead == false) {
+		} else if(dead == false && deadTooSoonGuard==false) {
 			dead = true;
 			gameOverMsg.SetActive(true);
 			Cursor.lockState = CursorLockMode.None;
@@ -106,6 +113,7 @@ public class PlayerControl : MonoBehaviour {
 		} else if(recentCloud) {
 			CloudBrain cbScript = recentCloud.GetComponentInParent<CloudBrain>();
 			if(cbScript) {
+				cbScript.hasPlayer = true;
 				CloudBrain.BumpKind treasureReturnKind = cbScript.ClearTreasure();
 				switch(treasureReturnKind) {
 				case CloudBrain.BumpKind.monster:
@@ -132,6 +140,10 @@ public class PlayerControl : MonoBehaviour {
 			if( Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) ) {
 				if(recentCloud != null) {
 					recentCloud.layer = cloudLayer;
+					CloudBrain cbScript = recentCloud.GetComponent<CloudBrain>();
+					if(cbScript) {
+						cbScript.hasPlayer = false;
+					}
 				}
 				recentCloud = rhInfo.collider.gameObject;
 				goTo = Vector3.up * CloudGenerator.heightAboveCloud * recentCloud.transform.lossyScale.z;
@@ -164,6 +176,10 @@ public class PlayerControl : MonoBehaviour {
 		transform.position += Vector3.up * 100.0f * Time.deltaTime * Input.GetAxis("RiseFall");*/
 		turnLong += Input.GetAxis("Mouse X") * 120.0f * Time.deltaTime / Time.timeScale;
 		turnLat += -Input.GetAxis("Mouse Y") * 120.0f * Time.deltaTime / Time.timeScale;
+
+		if(Input.GetKeyDown(KeyCode.K)) {
+			MonsterLeapAI.seekPlayer = true;
+		}
 
 		turnLat = Mathf.Clamp(turnLat, -55.0f, 55.0f);
 
