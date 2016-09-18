@@ -24,7 +24,7 @@ public class MapGenerator : MonoBehaviour
     [Range(0, 6)]
     [SerializeField] int m_editorPreviewLod = 0;
 
-    [SerializeField] float m_meshHeightMultiplier = 10f;
+    [SerializeField] float m_meshHeightMultiplier = 6f;
     [SerializeField] AnimationCurve m_meshHeightCurve;
 
     public bool autoUpdate = true;

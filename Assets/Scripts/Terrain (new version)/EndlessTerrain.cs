@@ -7,14 +7,14 @@ using System.Threading;
 
 public class EndlessTerrain : MonoBehaviour
 {
-	public const float Scale = 30f;
+	public const float Scale = 120f;
     private const float ViewerMoveThresholdForChunkUpdate = 250f;
     private const float SquViewerMoveThresholdForChunkUpdate = ViewerMoveThresholdForChunkUpdate * ViewerMoveThresholdForChunkUpdate;
 
     //public TerrainDetail m_terrainDetail = TerrainDetail.High;
     public LodInfo[] m_detailLevels;
     private LodInfo[] m_startDetailLevels;
-    public static float MaxViewDst = 900f;
+    public static float MaxViewDst = 3f;
     public static Vector3 ViewerPosition;
     private static Vector3 ViewerPositionOld;
 
