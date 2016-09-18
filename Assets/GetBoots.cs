@@ -18,6 +18,7 @@ public class GetBoots : MonoBehaviour {
 	}
 
 	public void StartGettingBoots() {
+		CloudGenerator.totalTreasures = 0;
 		isMoving = true;
 	}
 }
