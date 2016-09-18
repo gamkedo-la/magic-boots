@@ -50,6 +50,10 @@ public class CloudGenerator : MonoBehaviour
 
     public static Dictionary<GameObject, Vector2> AllClouds;
 
+	public float maxDist() {
+		return m_maxDistance;
+	}
+
 	void Awake() {
 		instance = this;
 	}

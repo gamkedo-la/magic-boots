@@ -6,9 +6,29 @@ public class CloudBrain : MonoBehaviour {
 	public enum BumpKind {empty,monster,treasure};
 	public bool hasPlayer = false;
 
+	ParticleSystem[] emittersToFade;
+
+	ParticleSystem.MinMaxGradient colorGrad;
+
 	void Start() {
 		if(Random.Range(0.0f, 1.0f) < CloudGenerator.instance.treasureSpawnOdds) {
 			AddTreasure();
+		}
+		emittersToFade = GetComponentsInChildren<ParticleSystem>();
+	}
+
+	void Update() {
+		Color fadedCol = Color.white;
+		float camDist = Vector3.Distance(transform.position, Camera.main.transform.position);
+
+		fadedCol.a = 1.0f-(camDist / CloudGenerator.instance.maxDist());
+		// fadedCol.a *= fadedCol.a;
+		colorGrad = new ParticleSystem.MinMaxGradient(fadedCol);
+
+		for(int i = 0; i < emittersToFade.Length; i++) {
+			// emittersToFade[i].startColor = fadedCol;
+			ParticleSystem.ColorOverLifetimeModule overLifetime = emittersToFade[i].colorOverLifetime;
+			overLifetime.color = colorGrad;
 		}
 	}
 
