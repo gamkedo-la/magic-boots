@@ -32,8 +32,13 @@ public class PlayerControl : MonoBehaviour {
 	public int dangerTimeSec = 12;
 	bool deadTooSoonGuard = false;
 
+	Color scoreFade;
+	bool scoreFadedIn = false;
+
 	// Use this for initialization
 	void Start () {
+		CloudBrain.enemiesAwake = false;
+
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 
@@ -42,6 +47,24 @@ public class PlayerControl : MonoBehaviour {
 
 		cameFrom = goTo = transform.position;
 		scoreNow = 0;
+
+		scoreFade = scoreMsg.color;
+		scoreFade.a = 0.0f;
+		scoreMsg.color = scoreFade;
+	}
+
+	IEnumerator ShowScoreIfHidden() {
+		if(scoreFadedIn == false) {
+			scoreFadedIn = true;
+			CloudBrain.enemiesAwake = true;
+
+			float fadeCounter = 70.0f;
+			for(float f = 0; f < fadeCounter; f++) {
+				scoreFade.a = ( (float)(f+1.0f) )/fadeCounter;
+				scoreMsg.color = scoreFade;
+				yield return new WaitForSeconds(0.05f);
+			}
+		}
 	}
 
 	IEnumerator CrazyMode() {
@@ -120,6 +143,8 @@ public class PlayerControl : MonoBehaviour {
 					StartCoroutine(CrazyMode());
 					break;
 				case CloudBrain.BumpKind.treasure:
+					StartCoroutine(ShowScoreIfHidden());
+
 					scoreNow++;
 					if(alreadyCrazy == false) {
 						scoreMsg.text = "" + scoreNow;
@@ -177,9 +202,9 @@ public class PlayerControl : MonoBehaviour {
 		turnLong += Input.GetAxis("Mouse X") * 120.0f * Time.deltaTime / Time.timeScale;
 		turnLat += -Input.GetAxis("Mouse Y") * 120.0f * Time.deltaTime / Time.timeScale;
 
-		if(Input.GetKeyDown(KeyCode.K)) {
+		/*if(Input.GetKeyDown(KeyCode.K)) {
 			MonsterLeapAI.seekPlayer = true;
-		}
+		}*/
 
 		turnLat = Mathf.Clamp(turnLat, -55.0f, 55.0f);
 

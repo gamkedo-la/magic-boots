@@ -6,9 +6,14 @@ public class CloudBrain : MonoBehaviour {
 	public enum BumpKind {empty,monster,treasure};
 	public bool hasPlayer = false;
 
+	public static bool enemiesAwake = false;
+
 	ParticleSystem[] emittersToFade;
 
 	ParticleSystem.MinMaxGradient colorGrad;
+
+	public GameObject sleepingEnemy;
+
 
 	void Start() {
 		if(Random.Range(0.0f, 1.0f) < CloudGenerator.instance.treasureSpawnOdds) {
@@ -18,6 +23,10 @@ public class CloudBrain : MonoBehaviour {
 	}
 
 	void Update() {
+		if(enemiesAwake && sleepingEnemy && sleepingEnemy.activeSelf==false) {
+			sleepingEnemy.SetActive(true);
+		}
+
 		Color fadedCol = Color.white;
 		float camDist = Vector3.Distance(transform.position, Camera.main.transform.position);
 
@@ -43,10 +52,18 @@ public class CloudBrain : MonoBehaviour {
 		myTreasure.transform.Rotate(Vector3.up, Random.Range(0.0f,360.0f));
 		myTreasure.transform.position = myTopPt();
 		myTreasure.transform.parent = transform;
+
+		if(myTreasure.GetComponent<MonsterLeapAI>()) {
+			sleepingEnemy = myTreasure;
+			if(enemiesAwake == false) {
+				sleepingEnemy.SetActive(false);
+			}
+		}
 	}
 
 	public Vector3 myTopPt() {
-		return transform.position + Vector3.up * CloudGenerator.heightAboveCloudTreasure * transform.lossyScale.z;
+		return transform.position + Vector3.up * CloudGenerator.heightAboveCloudTreasure * transform.lossyScale.z -
+			Vector3.up * 62.0f;
 	}
 
 	public bool hasTreasure() {
