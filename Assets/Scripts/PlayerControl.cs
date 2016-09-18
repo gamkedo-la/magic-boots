@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
+	public Text endText;
+
 	public GameObject cloudJumpReady;
 	public GameObject cloudJumpTooFar;
 	public AudioSource nightmareSound;
@@ -28,6 +30,7 @@ public class PlayerControl : MonoBehaviour {
 	bool dead = false;
 	public GameObject gameOverMsg;
 	public Text scoreMsg;
+	public Text warnMsg;
 	int scoreNow;
 	public int dangerTimeSec = 12;
 	bool deadTooSoonGuard = false;
@@ -76,25 +79,35 @@ public class PlayerControl : MonoBehaviour {
 			colorCorrectionNightmare.enabled = true;
 			Time.timeScale = 3.0f;
 
+			int safetyTick = 3;
+
 			for(int sec = 0; sec < dangerTimeSec; sec++) {
 				int timeLeft = dangerTimeSec-sec;
 				if(dead == false) {
-					scoreMsg.text = "" + scoreNow + " (" + timeLeft + " sec)";
+					warnMsg.text = " RUN! " + timeLeft + " sec";
 					yield return new WaitForSeconds(Time.timeScale);
 					if(deadTooSoonGuard) {
-						deadTooSoonGuard = false;
+						safetyTick--;
+						if(safetyTick < 0) {
+							deadTooSoonGuard = false;
+						}
 					}
 				} else {
 					yield break;
 				}
 			}
 			MonsterLeapAI.seekPlayer = false;
-			scoreMsg.text = ""+scoreNow;
+			warnMsg.text = "";
 			colorCorrectionNightmare.enabled = false;
 			Time.timeScale = 1.0f;
 			alreadyCrazy = false;
 		} else if(dead == false && deadTooSoonGuard==false) {
 			dead = true;
+			if(scoreNow > CloudGenerator.totalTreasures / 2) {
+				endText.text = "YOU SAVED\nYOUR TOYS\nAND OVERCAME\nYOUR FEARS";
+			} else {
+				endText.text = "YOUR\nNIGHTMARES\nCAUGHT UP\nTO YOU";
+			}
 			gameOverMsg.SetActive(true);
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
@@ -140,14 +153,16 @@ public class PlayerControl : MonoBehaviour {
 				CloudBrain.BumpKind treasureReturnKind = cbScript.ClearTreasure();
 				switch(treasureReturnKind) {
 				case CloudBrain.BumpKind.monster:
-					StartCoroutine(CrazyMode());
+					if(cbScript.gameObject.activeSelf) { // harmless if hidden
+						StartCoroutine(CrazyMode());
+					}
 					break;
 				case CloudBrain.BumpKind.treasure:
 					StartCoroutine(ShowScoreIfHidden());
 
 					scoreNow++;
 					if(alreadyCrazy == false) {
-						scoreMsg.text = "" + scoreNow;
+						scoreMsg.text = "" + scoreNow + " / " + (CloudGenerator.totalTreasures / 2);
 					}
 					break;
 				}

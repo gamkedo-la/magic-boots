@@ -58,6 +58,8 @@ public class CloudBrain : MonoBehaviour {
 			if(enemiesAwake == false) {
 				sleepingEnemy.SetActive(false);
 			}
+		} else {
+			CloudGenerator.totalTreasures++;
 		}
 	}
 

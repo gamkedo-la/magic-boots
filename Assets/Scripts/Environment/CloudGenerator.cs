@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class CloudGenerator : MonoBehaviour
 {
+	public static int totalTreasures = 0;
+
 	public static float heightAboveCloud = 2.6f; // how high above center to "perch" on it (cloud scale multiplies by this)
 	public static float heightAboveCloudTreasure = 2.1f; // lower than player cam since should partly be "in" cloud
 

@@ -48,7 +48,14 @@ public class MonsterLeapAI : MonoBehaviour {
 						transform.position = 
 							Vector3.Lerp(startedAt,
 								cbScript.myTopPt(),f/50.0f);
-						transform.LookAt(cbScript.myTopPt());
+
+						// transform.LookAt(cbScript.myTopPt());
+						transform.rotation = Quaternion.Slerp(
+							transform.rotation,
+							Quaternion.LookRotation(
+								cbScript.myTopPt() - transform.position),
+							Time.deltaTime * 2.0f);
+						
 
 						float interpPerc = f/50.0f;
 						if(interpPerc < 1.0f) {
