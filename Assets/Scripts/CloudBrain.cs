@@ -86,7 +86,11 @@ public class CloudBrain : MonoBehaviour {
 			Destroy(myTreasure);
 			if(mlaiScript != null) {
 				// Debug.Log("Removed monster!");
-				return BumpKind.monster;
+				if(enemiesAwake) {
+					return BumpKind.monster;
+				} else {
+					return BumpKind.empty;
+				}
 			} else {
 				// Debug.Log("Removed treasure!");
 				return BumpKind.treasure;

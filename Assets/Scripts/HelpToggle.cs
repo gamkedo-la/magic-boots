@@ -15,7 +15,7 @@ public class HelpToggle : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.H)) {
 			showingHelp = !showingHelp;
 			if(showingHelp) {
-				helpText.text = "Mouse Click or Spacebar to move\nGather treasure! Avoid nightmares!";
+				helpText.text = "Mouse Click or Spacebar to move\nGather your toys! Avoid nightmares!";
 			} else {
 				helpText.text = "Press H for Help";
 			}

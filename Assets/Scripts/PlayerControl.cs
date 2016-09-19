@@ -32,6 +32,7 @@ public class PlayerControl : MonoBehaviour {
 	public GameObject gameOverMsg;
 	public Text scoreMsg;
 	public Text warnMsg;
+	public Text storyMsg;
 	int scoreNow;
 	public int dangerTimeSec = 12;
 	bool deadTooSoonGuard = false;
@@ -62,10 +63,19 @@ public class PlayerControl : MonoBehaviour {
 			scoreFadedIn = true;
 			CloudBrain.enemiesAwake = true;
 
-			float fadeCounter = 70.0f;
+			storyMsg.text = "My nightmares! Oh, no...\n"+"" +
+				"How did they find me here?";
+
+			float fadeCounter = 260.0f;
+			Color storyFade = Color.white;
 			for(float f = 0; f < fadeCounter; f++) {
+				// sCorE fades in while...
 				scoreFade.a = ( (float)(f+1.0f) )/fadeCounter;
 				scoreMsg.color = scoreFade;
+
+				// ...the sTorY text fades out
+				storyFade.a = 1.0f - scoreFade.a;
+				storyMsg.color = storyFade;
 				yield return new WaitForSeconds(0.05f);
 			}
 		}
