@@ -5,7 +5,8 @@ using System.Collections;
 public class GetBoots : MonoBehaviour {
 	public Transform boots;
 	public bool isMoving = false;
-	
+	static bool gotBootsAlready = false;
+
 	// Update is called once per frame
 	void Update () {
 		if(isMoving) {
@@ -18,7 +19,12 @@ public class GetBoots : MonoBehaviour {
 	}
 
 	public void StartGettingBoots() {
-		CloudGenerator.totalTreasures = 0;
-		isMoving = true;
+		if(gotBootsAlready) {
+			SceneManager.LoadScene(1);
+		} else {
+			gotBootsAlready = true;
+			CloudGenerator.totalTreasures = 0;
+			isMoving = true;
+		}
 	}
 }

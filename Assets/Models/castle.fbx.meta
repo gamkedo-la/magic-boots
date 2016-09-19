@@ -1,0 +1,459 @@
+fileFormatVersion: 2
+guid: bef8714e5e3d14e6fb3dc0404459df91
+timeCreated: 1474262829
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: brick
+    100002: brick 1
+    100004: brick 2
+    100006: brick 3
+    100008: brick1
+    100010: brick1 1
+    100012: brick1 2
+    100014: brick1 3
+    100016: brick2
+    100018: brick2 1
+    100020: brick2 2
+    100022: brick2 3
+    100024: brick3
+    100026: brick3 1
+    100028: brick3 2
+    100030: brick3 3
+    100032: brick4
+    100034: brick4 1
+    100036: brick4 2
+    100038: brick4 3
+    100040: //RootNode
+    100042: castleBase
+    100044: castleTower
+    100046: castleTower1
+    100048: castleTower2
+    100050: castleTower3
+    100052: nurbsCube1
+    100054: TowerBase
+    100056: TowerBase 1
+    100058: TowerBase 2
+    100060: TowerBase 3
+    100062: towerBrick
+    100064: towerBrick 1
+    100066: towerBrick 2
+    100068: towerBrick 3
+    100070: towerBrick1
+    100072: towerBrick1 1
+    100074: towerBrick1 2
+    100076: towerBrick1 3
+    100078: towerBrick2
+    100080: towerBrick2 1
+    100082: towerBrick2 2
+    100084: towerBrick2 3
+    100086: towerBrick3
+    100088: towerBrick3 1
+    100090: towerBrick3 2
+    100092: towerBrick3 3
+    100094: towerBrick4
+    100096: towerBrick4 1
+    100098: towerBrick4 2
+    100100: towerBrick4 3
+    100102: towerBrick5
+    100104: towerBrick5 1
+    100106: towerBrick5 2
+    100108: towerBrick5 3
+    100110: towerBrick6
+    100112: towerBrick6 1
+    100114: towerBrick6 2
+    100116: towerBrick6 3
+    100118: towerBrick7
+    100120: towerBrick7 1
+    100122: towerBrick7 2
+    100124: towerBrick7 3
+    100126: towerBrick8
+    100128: towerBrick8 1
+    100130: towerBrick8 2
+    100132: towerBrick8 3
+    100134: towerBrick9
+    100136: towerBrick9 1
+    100138: towerBrick9 2
+    100140: towerBrick9 3
+    100142: upperWall
+    100144: upperWall 1
+    100146: upperWall 2
+    100148: upperWall 3
+    100150: upperWallGroup
+    100152: upperWallGroup 1
+    100154: upperWallGroup1
+    100156: upperWallGroup2
+    100158: upperWallGroup3
+    100160: upperWallTower
+    100162: upperWallTower 1
+    100164: upperWallTower 2
+    100166: upperWallTower 3
+    400000: brick
+    400002: brick 1
+    400004: brick 2
+    400006: brick 3
+    400008: brick1
+    400010: brick1 1
+    400012: brick1 2
+    400014: brick1 3
+    400016: brick2
+    400018: brick2 1
+    400020: brick2 2
+    400022: brick2 3
+    400024: brick3
+    400026: brick3 1
+    400028: brick3 2
+    400030: brick3 3
+    400032: brick4
+    400034: brick4 1
+    400036: brick4 2
+    400038: brick4 3
+    400040: //RootNode
+    400042: castleBase
+    400044: castleTower
+    400046: castleTower1
+    400048: castleTower2
+    400050: castleTower3
+    400052: nurbsCube1
+    400054: TowerBase
+    400056: TowerBase 1
+    400058: TowerBase 2
+    400060: TowerBase 3
+    400062: towerBrick
+    400064: towerBrick 1
+    400066: towerBrick 2
+    400068: towerBrick 3
+    400070: towerBrick1
+    400072: towerBrick1 1
+    400074: towerBrick1 2
+    400076: towerBrick1 3
+    400078: towerBrick2
+    400080: towerBrick2 1
+    400082: towerBrick2 2
+    400084: towerBrick2 3
+    400086: towerBrick3
+    400088: towerBrick3 1
+    400090: towerBrick3 2
+    400092: towerBrick3 3
+    400094: towerBrick4
+    400096: towerBrick4 1
+    400098: towerBrick4 2
+    400100: towerBrick4 3
+    400102: towerBrick5
+    400104: towerBrick5 1
+    400106: towerBrick5 2
+    400108: towerBrick5 3
+    400110: towerBrick6
+    400112: towerBrick6 1
+    400114: towerBrick6 2
+    400116: towerBrick6 3
+    400118: towerBrick7
+    400120: towerBrick7 1
+    400122: towerBrick7 2
+    400124: towerBrick7 3
+    400126: towerBrick8
+    400128: towerBrick8 1
+    400130: towerBrick8 2
+    400132: towerBrick8 3
+    400134: towerBrick9
+    400136: towerBrick9 1
+    400138: towerBrick9 2
+    400140: towerBrick9 3
+    400142: upperWall
+    400144: upperWall 1
+    400146: upperWall 2
+    400148: upperWall 3
+    400150: upperWallGroup
+    400152: upperWallGroup 1
+    400154: upperWallGroup1
+    400156: upperWallGroup2
+    400158: upperWallGroup3
+    400160: upperWallTower
+    400162: upperWallTower 1
+    400164: upperWallTower 2
+    400166: upperWallTower 3
+    2300000: brick
+    2300002: brick 1
+    2300004: brick 2
+    2300006: brick 3
+    2300008: brick1
+    2300010: brick1 1
+    2300012: brick1 2
+    2300014: brick1 3
+    2300016: brick2
+    2300018: brick2 1
+    2300020: brick2 2
+    2300022: brick2 3
+    2300024: brick3
+    2300026: brick3 1
+    2300028: brick3 2
+    2300030: brick3 3
+    2300032: brick4
+    2300034: brick4 1
+    2300036: brick4 2
+    2300038: brick4 3
+    2300040: castleBase
+    2300042: TowerBase
+    2300044: TowerBase 1
+    2300046: TowerBase 2
+    2300048: TowerBase 3
+    2300050: towerBrick
+    2300052: towerBrick 1
+    2300054: towerBrick 2
+    2300056: towerBrick 3
+    2300058: towerBrick1
+    2300060: towerBrick1 1
+    2300062: towerBrick1 2
+    2300064: towerBrick1 3
+    2300066: towerBrick2
+    2300068: towerBrick2 1
+    2300070: towerBrick2 2
+    2300072: towerBrick2 3
+    2300074: towerBrick3
+    2300076: towerBrick3 1
+    2300078: towerBrick3 2
+    2300080: towerBrick3 3
+    2300082: towerBrick4
+    2300084: towerBrick4 1
+    2300086: towerBrick4 2
+    2300088: towerBrick4 3
+    2300090: towerBrick5
+    2300092: towerBrick5 1
+    2300094: towerBrick5 2
+    2300096: towerBrick5 3
+    2300098: towerBrick6
+    2300100: towerBrick6 1
+    2300102: towerBrick6 2
+    2300104: towerBrick6 3
+    2300106: towerBrick7
+    2300108: towerBrick7 1
+    2300110: towerBrick7 2
+    2300112: towerBrick7 3
+    2300114: towerBrick8
+    2300116: towerBrick8 1
+    2300118: towerBrick8 2
+    2300120: towerBrick8 3
+    2300122: towerBrick9
+    2300124: towerBrick9 1
+    2300126: towerBrick9 2
+    2300128: towerBrick9 3
+    2300130: upperWall
+    2300132: upperWall 1
+    2300134: upperWall 2
+    2300136: upperWall 3
+    2300138: upperWallTower
+    2300140: upperWallTower 1
+    2300142: upperWallTower 2
+    2300144: upperWallTower 3
+    3300000: brick
+    3300002: brick 1
+    3300004: brick 2
+    3300006: brick 3
+    3300008: brick1
+    3300010: brick1 1
+    3300012: brick1 2
+    3300014: brick1 3
+    3300016: brick2
+    3300018: brick2 1
+    3300020: brick2 2
+    3300022: brick2 3
+    3300024: brick3
+    3300026: brick3 1
+    3300028: brick3 2
+    3300030: brick3 3
+    3300032: brick4
+    3300034: brick4 1
+    3300036: brick4 2
+    3300038: brick4 3
+    3300040: castleBase
+    3300042: TowerBase
+    3300044: TowerBase 1
+    3300046: TowerBase 2
+    3300048: TowerBase 3
+    3300050: towerBrick
+    3300052: towerBrick 1
+    3300054: towerBrick 2
+    3300056: towerBrick 3
+    3300058: towerBrick1
+    3300060: towerBrick1 1
+    3300062: towerBrick1 2
+    3300064: towerBrick1 3
+    3300066: towerBrick2
+    3300068: towerBrick2 1
+    3300070: towerBrick2 2
+    3300072: towerBrick2 3
+    3300074: towerBrick3
+    3300076: towerBrick3 1
+    3300078: towerBrick3 2
+    3300080: towerBrick3 3
+    3300082: towerBrick4
+    3300084: towerBrick4 1
+    3300086: towerBrick4 2
+    3300088: towerBrick4 3
+    3300090: towerBrick5
+    3300092: towerBrick5 1
+    3300094: towerBrick5 2
+    3300096: towerBrick5 3
+    3300098: towerBrick6
+    3300100: towerBrick6 1
+    3300102: towerBrick6 2
+    3300104: towerBrick6 3
+    3300106: towerBrick7
+    3300108: towerBrick7 1
+    3300110: towerBrick7 2
+    3300112: towerBrick7 3
+    3300114: towerBrick8
+    3300116: towerBrick8 1
+    3300118: towerBrick8 2
+    3300120: towerBrick8 3
+    3300122: towerBrick9
+    3300124: towerBrick9 1
+    3300126: towerBrick9 2
+    3300128: towerBrick9 3
+    3300130: upperWall
+    3300132: upperWall 1
+    3300134: upperWall 2
+    3300136: upperWall 3
+    3300138: upperWallTower
+    3300140: upperWallTower 1
+    3300142: upperWallTower 2
+    3300144: upperWallTower 3
+    4300000: castleBase
+    4300002: upperWall
+    4300004: brick
+    4300006: brick1
+    4300008: brick2
+    4300010: brick3
+    4300012: brick4
+    4300014: upperWall
+    4300016: brick
+    4300018: brick1
+    4300020: brick2
+    4300022: brick3
+    4300024: brick4
+    4300026: upperWall
+    4300028: brick
+    4300030: brick1
+    4300032: brick2
+    4300034: brick3
+    4300036: brick4
+    4300038: upperWall
+    4300040: brick
+    4300042: brick1
+    4300044: brick2
+    4300046: brick3
+    4300048: brick4
+    4300050: TowerBase
+    4300052: upperWallTower
+    4300054: towerBrick
+    4300056: towerBrick1
+    4300058: towerBrick2
+    4300060: towerBrick3
+    4300062: towerBrick4
+    4300064: towerBrick5
+    4300066: towerBrick6
+    4300068: towerBrick7
+    4300070: towerBrick8
+    4300072: towerBrick9
+    4300074: TowerBase
+    4300076: upperWallTower
+    4300078: towerBrick
+    4300080: towerBrick1
+    4300082: towerBrick2
+    4300084: towerBrick3
+    4300086: towerBrick4
+    4300088: towerBrick5
+    4300090: towerBrick6
+    4300092: towerBrick7
+    4300094: towerBrick8
+    4300096: towerBrick9
+    4300098: TowerBase
+    4300100: upperWallTower
+    4300102: towerBrick
+    4300104: towerBrick1
+    4300106: towerBrick2
+    4300108: towerBrick3
+    4300110: towerBrick4
+    4300112: towerBrick5
+    4300114: towerBrick6
+    4300116: towerBrick7
+    4300118: towerBrick8
+    4300120: towerBrick9
+    4300122: TowerBase
+    4300124: upperWallTower
+    4300126: towerBrick
+    4300128: towerBrick1
+    4300130: towerBrick2
+    4300132: towerBrick3
+    4300134: towerBrick4
+    4300136: towerBrick5
+    4300138: towerBrick6
+    4300140: towerBrick7
+    4300142: towerBrick8
+    4300144: towerBrick9
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

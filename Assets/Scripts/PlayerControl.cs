@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
@@ -70,6 +71,26 @@ public class PlayerControl : MonoBehaviour {
 		}
 	}
 
+	void showEnd() {
+		dead = true;
+		Time.timeScale = 0;
+
+		if(scoreNow >= CloudGenerator.totalTreasures / 2) {
+			endText.text = "YOU SAVED\nYOUR TOYS\nAND OVERCAME\nYOUR FEARS";
+			MonsterLeapAI.seekPlayer = false;
+			warnMsg.text = "";
+			colorCorrectionNightmare.enabled = false;
+			Time.timeScale = 1.0f;
+			alreadyCrazy = false;
+
+		} else {
+			endText.text = "YOUR\nNIGHTMARES\nCAUGHT UP\nTO YOU";
+		}
+		gameOverMsg.SetActive(true);
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+	}
+
 	IEnumerator CrazyMode() {
 		if(alreadyCrazy == false) {
 			alreadyCrazy = true;
@@ -103,14 +124,7 @@ public class PlayerControl : MonoBehaviour {
 			alreadyCrazy = false;
 		} else if(dead == false && deadTooSoonGuard==false) {
 			dead = true;
-			if(scoreNow > CloudGenerator.totalTreasures / 2) {
-				endText.text = "YOU SAVED\nYOUR TOYS\nAND OVERCAME\nYOUR FEARS";
-			} else {
-				endText.text = "YOUR\nNIGHTMARES\nCAUGHT UP\nTO YOU";
-			}
-			gameOverMsg.SetActive(true);
-			Cursor.lockState = CursorLockMode.None;
-			Cursor.visible = true;
+			showEnd();
 		}
 	}
 	
@@ -119,7 +133,9 @@ public class PlayerControl : MonoBehaviour {
 		RaycastHit rhInfo;
 
 		if(Input.GetKeyDown(KeyCode.Escape)) {
-			Application.Quit();
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+			SceneManager.LoadScene(0);
 		}
 
 		if(dead) {
@@ -161,8 +177,11 @@ public class PlayerControl : MonoBehaviour {
 					StartCoroutine(ShowScoreIfHidden());
 
 					scoreNow++;
-					if(alreadyCrazy == false) {
-						scoreMsg.text = "" + scoreNow + " / " + (CloudGenerator.totalTreasures / 2);
+
+					scoreMsg.text = "" + scoreNow + " / " + (CloudGenerator.totalTreasures / 2);
+
+					if(scoreNow >= CloudGenerator.totalTreasures / 2) {
+						showEnd();
 					}
 					break;
 				}
